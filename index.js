@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const path = require('path');
+
 const flash = require('express-flash');
 const methodOverride = require('method-override');
 
@@ -40,6 +42,10 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
 
 app.use(express.static(`${__dirname}/public`));
+
+// tinyMCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+// end tinyMCE
 
 
 // App local variable
